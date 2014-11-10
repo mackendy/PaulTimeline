@@ -1,0 +1,4 @@
+services:
+#    paul_timeline.example:
+#        class: Paul\TimelineBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

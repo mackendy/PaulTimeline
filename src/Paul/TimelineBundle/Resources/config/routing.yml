@@ -1,0 +1,9 @@
+
+post_list:
+    path:     /
+    defaults: { _controller: PaulTimelineBundle:Post:list }
+
+post_create:
+    path:     /post/create
+    defaults: { _controller: PaulTimelineBundle:Post:create }
+
