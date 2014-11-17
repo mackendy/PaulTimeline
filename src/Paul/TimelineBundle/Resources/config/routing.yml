@@ -4,6 +4,11 @@ post_list:
     defaults: { _controller: PaulTimelineBundle:Post:list }
 
 post_create:
-    path:     /post/create
+    path:     /admin/post/create
     defaults: { _controller: PaulTimelineBundle:Post:create }
 
+post_view:
+    path:     /post/{id}/view
+    defaults: { _controller: PaulTimelineBundle:Post:view }
+    requirements:
+        id: \d+

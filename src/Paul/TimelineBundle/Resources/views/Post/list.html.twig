@@ -1,8 +1,20 @@
-{% extends "PaulTimelineBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('bundles/paultimeline/css/styles.css') }}" rel="stylesheet" />
 {% endblock %}
+
+{% block arianne %}
+    {{ parent() }}
+    <li>Timeline<span class="divider"></span></li>
+{% endblock %}
+
+{# verifie si il est admin pour suprimer
+{% if is_granted('ROLE_ADMIN') %}
+    <a href="...">Supprimer</a>
+{% endif %}
+#}
+
 
 {% block body %}
     <div class="timeline animated">
@@ -142,7 +154,7 @@
                     <h2>
                         This is an image posted on my timeline
                     </h2>
-                    <img class="img-responsive" src="https://lorempixel.com/output/nature-q-c-640-480-10.jpg" />
+                    <img class="img-responsive" src="http://lorempixel.com/output/640/480/nature/" />
                     <p>
                         Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.
                     </p>
@@ -172,8 +184,34 @@
                 </div>
             </div>
         </div>
+        {% for post in posts %}
+
+            <div class="timeline-row">
+                <div class="timeline-time">
+                    <small>{{ post.date|date(" D M ") }}</small>
+                </div>
+                <div class="timeline-icon">
+                    <div class="bg-primary">
+                        <i class="fa fa-{{ post.type }}"></i>
+                    </div>
+                </div>
+                <div class="panel timeline-content">
+                    <div class="panel-body">
+                        <h2>
+                            {{ post.title }}
+                        </h2>
+                        <p>
+                             {{ post.content }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
     </div>
+    {% block javascripts %}
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('bundles/paultimeline/js/main.js') }}"></script>
+        {% endblock %}
 {% endblock %}

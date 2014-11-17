@@ -5,6 +5,7 @@ namespace Paul\TimelineBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assets;
 
+
 /**
  * Post
  *
@@ -29,6 +30,7 @@ class Post
      */
     protected $date;
 
+
     /**
      * @var string
      *
@@ -36,12 +38,18 @@ class Post
      */
     protected $title;
 
-
-
     /**
      * @var string
      *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\Column(name="media", type="string", length=255)
+     */
+    protected $media;
+
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Paul\UserBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
      */
     protected $author;
 
@@ -69,6 +77,7 @@ class Post
     public function __construct()
     {
         $this->date = new \DateTime("now");
+        $this->published = 1;
     }
 
 
@@ -219,5 +228,30 @@ class Post
     public function getType()
     {
         return $this->type;
+    }
+
+
+
+    /**
+     * Set media
+     *
+     * @param string $media
+     * @return Post
+     */
+    public function setMedia($media)
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return string 
+     */
+    public function getMedia()
+    {
+        return $this->media;
     }
 }

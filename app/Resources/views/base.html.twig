@@ -3,11 +3,39 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" media="all" rel="stylesheet">
+            <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" media="all" rel="stylesheet">
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+
+    <ul class="breadcrumb">
+        {% block arianne %}
+            <li>Home<span class="divider"></span></li>
+        {% endblock %}
+    </ul>
+
+    <div id="flashs">
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }}">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <h4>{% if type == "info" %}Info !{% elseif type == 'warning' %}Attention !{% elseif type == 'error' %}Erreur !{% endif %}</h4>
+                    {{ message|raw }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+    <header>
+        {% block header %}
+
+        {% endblock %}
+    </header>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+        <footer></footer>
     </body>
 </html>
