@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    public function findAllPublic()
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb->where("p.published = true");
+
+        $query = $qb->getQuery();
+
+        $results = $query->getResult();
+
+        return $results;
+    }
 }

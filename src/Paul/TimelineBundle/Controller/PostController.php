@@ -6,8 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Paul\TimelineBundle\Entity\Post;
 use Paul\TimelineBundle\Form\Type\PostType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+
 
 
 /**
@@ -22,10 +21,7 @@ class PostController extends Controller
      */
     public function listAction()
     {
-        $post = $this->getDoctrine()
-                    ->getManager()
-                    ->getRepository('PaulTimelineBundle:Post')
-                    ->findBy(array('published'=>TRUE));
+        $post = $this->getDoctrine()->getRepository("PaulTimelineBundle:Post")->findAllPublic();
 
         return $this->render('PaulTimelineBundle:Post:list.html.twig',array(
             'posts'=>$post,

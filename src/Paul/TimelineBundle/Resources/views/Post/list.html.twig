@@ -201,7 +201,9 @@
                             {{ post.title }}
                         </h2>
                         <p>
-                             {{ post.content }}
+
+                             {{ post.content|raw }}
+
                         </p>
                     </div>
                 </div>
