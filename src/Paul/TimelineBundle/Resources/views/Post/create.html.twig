@@ -1,10 +1,19 @@
 {% extends "::base.html.twig" %}
 
+{% block arianne %}
+    {{ parent() }}
+    <li>Create Post<span class="divider"></span></li>
+{% endblock %}
 
 {% block body %}
     <div class="container">
         {{ form_start(form) }}
+
         {{ form_end(form) }}
     </div>
     {{ tinymce_init() }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/paultimeline/js/bootstrap-perso.js') }}"></script>
 {% endblock %}

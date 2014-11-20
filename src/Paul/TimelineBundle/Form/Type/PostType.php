@@ -27,6 +27,10 @@ class PostType extends AbstractType
                     'data-theme' => 'advanced'
                 )
             ))
+            ->add('DateEvent','genemu_jquerydate',array(
+                'widget' => 'single_text',
+                'attr'=> array('class'=>' date')
+            ))
             ->add('type','choice', array(
                 'attr' => array('class'=>'form-control'),
                 'choices' => array(
@@ -36,11 +40,11 @@ class PostType extends AbstractType
                     'video-camera' => 'video',
                 )
              ))
-            ->add('media','text',array(
-                'attr' => array('class'=>'form-control'),
-                'help'=>'text help OK OK ',
-            ))
-            ->add('save', 'submit', array('label' => 'Create Post'));
+            ->add('save', 'submit', array(
+                'label' => 'Create Post',
+                'attr' => array('class' => 'btn btn-default')
+
+            ));
 
 
 

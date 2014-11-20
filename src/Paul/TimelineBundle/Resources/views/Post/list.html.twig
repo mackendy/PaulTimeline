@@ -6,7 +6,7 @@
 
 {% block arianne %}
     {{ parent() }}
-    <li>Timeline<span class="divider"></span></li>
+<li><a href="{{ path('post_create') }}">Create post</a><span class="divider"></span></li>
 {% endblock %}
 
 {# verifie si il est admin pour suprimer
@@ -17,6 +17,9 @@
 
 
 {% block body %}
+    <div class="paul_image">
+        <img src="{{ asset('bundles/paultimeline/images/paul.jpg') }}" class="img-responsive img-circle" alt="Responsive image">
+    </div>
     <div class="timeline animated">
         <div class="timeline-row">
             <div class="timeline-time">
@@ -188,7 +191,7 @@
 
             <div class="timeline-row">
                 <div class="timeline-time">
-                    <small>{{ post.date|date(" D M ") }}</small>
+                    <small>{{ post.dateEvent|date("d M Y") }}</small>
                 </div>
                 <div class="timeline-icon">
                     <div class="bg-primary">
@@ -199,12 +202,14 @@
                     <div class="panel-body">
                         <h2>
                             {{ post.title }}
+                            <a href="{{ path('post_update',{ id: post.id }) }}" class="delete-post"><i class="fa fa-times"></i></a>
                         </h2>
                         <p>
 
                              {{ post.content|raw }}
 
                         </p>
+                        <p>by :  {{ post.author }} - le {{ post.date|date('d M Y') }}</p>
                     </div>
                 </div>
             </div>

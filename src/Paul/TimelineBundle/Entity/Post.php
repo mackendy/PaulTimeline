@@ -32,18 +32,21 @@ class Post
 
 
     /**
+     * @var \Date
+     *
+     * @ORM\Column(name="date_event", type="date")
+     */
+    protected $dateEvent;
+
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
     protected $title;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="media", type="string", length=255, nullable=true)
-     */
-    protected $media;
+
 
 
 
@@ -233,25 +236,25 @@ class Post
 
 
     /**
-     * Set media
+     * Set dateEvent
      *
-     * @param string $media
+     * @param \DateTime $dateEvent
      * @return Post
      */
-    public function setMedia($media)
+    public function setDateEvent($dateEvent)
     {
-        $this->media = $media;
+        $this->dateEvent = $dateEvent;
 
         return $this;
     }
 
     /**
-     * Get media
+     * Get dateEvent
      *
-     * @return string 
+     * @return \DateTime 
      */
-    public function getMedia()
+    public function getDateEvent()
     {
-        return $this->media;
+        return $this->dateEvent;
     }
 }

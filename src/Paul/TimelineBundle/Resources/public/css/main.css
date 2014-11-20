@@ -1,0 +1,18 @@
+body {
+    background-color: #5bbcd5;
+}
+
+form > div{
+    margin-top: 20px;
+}
+ form label{
+     margin-right: 10px;
+ }
+
+ .paul_image{
+
+ }
+ .paul_image img{
+     width: 200px;
+     margin: 0 auto;
+ }

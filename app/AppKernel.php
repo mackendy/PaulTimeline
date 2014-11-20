@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new SimpleThings\FormExtraBundle\SimpleThingsFormExtraBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+            new Genemu\Bundle\FormBundle\GenemuFormBundle(),
 
             new Paul\UserBundle\PaulUserBundle(),
             new Paul\TimelineBundle\PaulTimelineBundle(),

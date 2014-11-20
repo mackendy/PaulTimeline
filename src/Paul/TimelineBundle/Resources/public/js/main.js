@@ -15,6 +15,7 @@
     return $(window).scroll(function() {
       return timelineAnimate();
     });
+
   });
 
 }).call(this);

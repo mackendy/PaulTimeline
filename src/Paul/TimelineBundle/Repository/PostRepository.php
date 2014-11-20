@@ -16,7 +16,8 @@ class PostRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('p');
 
-        $qb->where("p.published = true");
+        $qb->where("p.published = true")
+            ->orderBy('p.dateEvent', 'ASC');
 
         $query = $qb->getQuery();
 

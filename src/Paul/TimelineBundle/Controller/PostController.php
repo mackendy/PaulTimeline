@@ -80,4 +80,26 @@ class PostController extends Controller
             'post'=> $post,
         ));
     }
+
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function updateAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $post = $em->getRepository('PaulTimelineBundle:Post')->find($id);
+
+        if (!$post) {
+            $this->get('session')->getFlashBag()->add('error', 'pas de reponse pour votre requete ');
+        }else{
+
+            $post->setPublished('0');
+            $em->persist($post);
+            $em->flush();
+            // Je renvoie un message de succes
+            $this->get('session')->getFlashBag()->add('success', 'Le post a bien été désactivé.');
+            return $this->redirect($this->generateUrl('post_list'));
+        }
+    }
 }

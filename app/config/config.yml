@@ -80,6 +80,12 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Paul\UserBundle\Entity\User
+    registration:
+            confirmation:
+                enabled:    true
+                from_email:
+                    address:        registration@acmedemo.com
+                    sender_name:    Acme Demo Registration
 
 # SimpleThingsFormExtraBundle Configuration
 simple_things_form_extra:
@@ -119,3 +125,6 @@ stfalcon_tinymce:
                  plugins: ["bbcode, code, link, preview"]
                  menubar: false
                  toolbar1: "bold,italic,underline,undo,redo,link,unlink,removeformat,cleanup,code,preview"
+# GenemuFormBundle Configuration
+genemu_form:
+    date: ~
