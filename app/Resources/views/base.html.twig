@@ -12,11 +12,14 @@
     </head>
     <body>
     <div class="container">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         <ul class="breadcrumb">
             {% block arianne %}
                 <li><a href="{{ path('post_list') }}">Timeline</a><span class="divider"></span></li>
             {% endblock %}
+
             <li class="pull-right"> <i class="fa fa-user"></i> {{  app.user.username }}<span class="divider"></span></li>
+
             <li class="pull-right">
 
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -27,7 +30,9 @@
                     <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                 {% endif %}
             </li>
+
         </ul>
+        {% endif %}
     </div>
     <div id="flashs">
         {% for type, messages in app.session.flashbag.all() %}
@@ -47,7 +52,10 @@
         {% endblock %}
     </header>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('/bower/jquery/dist/jquery.js') }}"></script>
+            <script src="{{ asset('bundles/paultimeline/js/bootstrap-perso.js') }}"></script>
+        {% endblock %}
         <footer></footer>
     </body>
 </html>

@@ -5,7 +5,7 @@
     $(document).ready(function(){
 
         $(function () {
-
+            $('input').addClass('form-control');
         });
     });
 })(jQuery);

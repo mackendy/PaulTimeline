@@ -5,7 +5,7 @@ body {
 form > div{
     margin-top: 20px;
 }
- form label{
+ form [for="paul_timelinebundle_post_DateEvent"]{
      margin-right: 10px;
  }
 
@@ -15,4 +15,9 @@ form > div{
  .paul_image img{
      width: 200px;
      margin: 0 auto;
+ }
+
+ .middel_page{
+     margin: 0 auto;
+     float: inherit;
  }

@@ -46,11 +46,7 @@ class PostController extends Controller
             // je verifie que mon post est valid
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-                // add automatiquement l'author (username) à l'entité post
-                $userManager = $this->container->get('fos_user.user_manager');
-                $user = $userManager->findUserByUsername($this->container->get('security.context')
-                    ->getToken()
-                    ->getUser());
+                $user = $this->getUser();
                 $post->setAuthor($user);
 
                 $em->persist($post);
@@ -85,13 +81,13 @@ class PostController extends Controller
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function updateAction($id)
+    public function updateAction(Post $post)
     {
         $em = $this->getDoctrine()->getManager();
-        $post = $em->getRepository('PaulTimelineBundle:Post')->find($id);
 
-        if (!$post) {
-            $this->get('session')->getFlashBag()->add('error', 'pas de reponse pour votre requete ');
+        if ($post->getPublished() == 0) {
+            $this->get('session')->getFlashBag()->add('error', 'Le post'. $post->getId() .' est deja désactivé');
+            return $this->redirect($this->generateUrl('post_list'));
         }else{
 
             $post->setPublished('0');

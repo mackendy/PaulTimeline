@@ -22,7 +22,8 @@
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "simplethings/form-extra-bundle": "dev-master",
         "stfalcon/tinymce-bundle": "dev-master",
-        "genemu/form-bundle": "2.2.*"
+        "genemu/form-bundle": "2.2.*",
+        "coresphere/console-bundle": "dev-master"
 
     },
     "require-dev": {
