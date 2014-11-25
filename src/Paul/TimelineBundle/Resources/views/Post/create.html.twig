@@ -8,12 +8,13 @@
 {% block body %}
     <div class="container">
         {{ form_start(form) }}
-
         {{ form_end(form) }}
+        {{ tinymce_init() }}
     </div>
-    {{ tinymce_init() }}
+
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('bundles/paultimeline/js/bootstrap-perso.js') }}"></script>
+    {{ parent() }}
+
 {% endblock %}

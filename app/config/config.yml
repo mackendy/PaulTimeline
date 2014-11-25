@@ -99,11 +99,10 @@ stfalcon_tinymce:
         #base_url: "http://yourdomain.com/" # this parameter may be included if you need to override the assets_base_urls for your template engine (to override a CDN base url)
         # Get current language from the parameters.ini
         language: %locale%
-        # Custom buttons
-        tinymce_buttons:
-            stfalcon: # Id of the first button
-                title: "Stfalcon"
-                image: "http://stfalcon.com/favicon.ico"
+        # External plugins
+        external_plugins:
+            jbimages:
+                url: "asset[bundles/paultimeline/js/tinymce-plugin/jbimages/plugin.min.js]"
         theme:
             # Simple theme: same as default theme
             simple: ~
@@ -113,9 +112,9 @@ stfalcon_tinymce:
                      - "advlist autolink lists link image charmap print preview hr anchor pagebreak"
                      - "searchreplace wordcount visualblocks visualchars code fullscreen"
                      - "insertdatetime media nonbreaking save table contextmenu directionality"
-                     - "emoticons template paste textcolor"
-                 toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-                 toolbar2: "print preview media | forecolor backcolor emoticons | stfalcon | example"
+                     - "emoticons template paste textcolor jbimages "
+                 toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image  "
+                 toolbar2: "print preview media | forecolor backcolor emoticons | jbimages"
                  image_advtab: true
                  templates:
                      - {title: 'Test template 1', content: 'Test 1'}
@@ -125,6 +124,7 @@ stfalcon_tinymce:
                  plugins: ["bbcode, code, link, preview"]
                  menubar: false
                  toolbar1: "bold,italic,underline,undo,redo,link,unlink,removeformat,cleanup,code,preview"
+
 # GenemuFormBundle Configuration
 genemu_form:
     date: ~

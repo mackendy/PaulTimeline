@@ -2,6 +2,7 @@
 
 namespace Paul\TimelineBundle\Controller;
 
+use Swift_Message;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Paul\TimelineBundle\Entity\Post;
 use Paul\TimelineBundle\Form\Type\PostType;
@@ -22,7 +23,13 @@ class PostController extends Controller
     public function listAction()
     {
         $post = $this->getDoctrine()->getRepository("PaulTimelineBundle:Post")->findAllPublic();
-
+        $message = Swift_Message::newInstance()
+            ->setSubject('Hello Email')
+            ->setFrom('send@example.com')
+            ->setTo('mackendy.jeudy@gmail.com')
+            ->setBody('message1')
+        ;
+        $this->get('mailer')->send($message);
         return $this->render('PaulTimelineBundle:Post:list.html.twig',array(
             'posts'=>$post,
         ));

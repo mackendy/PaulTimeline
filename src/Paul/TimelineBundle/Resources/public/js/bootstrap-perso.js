@@ -6,6 +6,7 @@
 
         $(function () {
             $('input').addClass('form-control');
+            $('#remember_me').removeClass('form-control');
         });
     });
 })(jQuery);
