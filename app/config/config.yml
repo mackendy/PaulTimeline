@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-   # - { resource: @PaulTimelineBundle/Resources/config/services.yml}
+    #- { resource: @PaulTimelineBundle/Resources/config/services.yml}
 
 framework:
     #esi:             ~
@@ -37,7 +37,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [FMElfinderBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -107,7 +107,9 @@ stfalcon_tinymce:
             # Simple theme: same as default theme
             simple: ~
             # Advanced theme with almost all enabled plugins
+
             advanced:
+                 file_browser_callback : 'elFinderBrowser'
                  plugins:
                      - "advlist autolink lists link image charmap print preview hr anchor pagebreak"
                      - "searchreplace wordcount visualblocks visualchars code fullscreen"
@@ -128,3 +130,23 @@ stfalcon_tinymce:
 # GenemuFormBundle Configuration
 genemu_form:
     date: ~
+
+fm_elfinder:
+    instances:
+        default:
+            locale: %locale% # defaults to current request locale
+            editor: tinymce4 # other choices are tinymce or simple, and form
+            tinymce_popup_path: "asset[bundles/stfalcontinymce/vendor/tiny_mce/tiny_mce_popup.js]"
+            fullscreen: true # defaults true, applies to simple and ckeditor editors
+            include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
+            compression: false # enable if you configured the uglifycss and uglifyjs2 assetic filters and want compression
+            connector:
+                debug: false # defaults to false
+                roots:       # at least one root must be defined
+                    uploads:
+                        showhidden: false # defaults to false
+                        driver: LocalFileSystem
+                        path: uploads
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_deny: ['all']
+                        upload_max_size: 2M

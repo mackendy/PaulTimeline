@@ -24,7 +24,8 @@
         "Trsteel/ckeditor-bundle" :"dev-master",
         "genemu/form-bundle": "2.2.*",
         "coresphere/console-bundle": "dev-master",
-        "helios-ag/fm-elfinder-bundle": "dev-master"
+        "helios-ag/fm-elfinder-bundle": "dev-master",
+
 
 },
     "require-dev": {

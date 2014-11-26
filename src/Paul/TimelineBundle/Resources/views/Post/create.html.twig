@@ -9,12 +9,14 @@
     <div class="container">
         {{ form_start(form) }}
         {{ form_end(form) }}
-        {{ tinymce_init() }}
+
     </div>
 
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+    {{ elfinder_tinymce_init4() }}
+    {{ tinymce_init() }}
 
 {% endblock %}
